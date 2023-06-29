@@ -1,0 +1,57 @@
+{% extends 'characterapp/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <a href="{% url 'character-list' %}">Back to characters</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h1>{{ character.name }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <ul class="list-group">
+            <li class="list-group-item">strength. {{ character.strength }}</li>
+            <li class="list-group-item">dexterity: {{ character.dexterity }}</li>
+            <li class="list-group-item">constitution: {{ character.constitution }}</li>
+            <li class="list-group-item">intelligence: {{ character.intelligence }}</li>
+            <li class="list-group-item">wisdom: {{ character.wisdom }}</li>
+            <li class="list-group-item">charisma: {{ character.charisma }}</li>
+            <li class="list-group-item">weapons: {{ character.weapons }}</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col">
+        <h2>Weapons</h2>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col">
+        <ul class="list-group">
+           {% for weapon in character.weapons.all %}
+           <li class="list-group-item">{{weapon.name}}</li>
+           {%empty%}
+           <li class="list-group-item">No weapon!</li>
+           {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!---<div class="row">
+    <div class="col">
+        <ul class="list-group">
+            {% for weapon in character.weapons %}
+                <li class="list-group-item">{{ weapon.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div> -->
